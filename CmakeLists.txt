@@ -1,0 +1,15 @@
+cmake_minimum_required(VERSION 3.1)
+project(download_progression)
+set(CMAKE_CXX_STANDARD, 20)
+
+set(CMAKE_CXX_STANDARD_REQUIRED, true)
+
+find_package(Boost REQUIRED)
+
+add_executable(download_progress src/main.cpp)
+
+target_include_directories(download_progress PRIVATE ${Boost_INCLUDE_DIRS})
+
+if(UNIX) 
+    target_link_libraries(download_progress pthread)
+endif()
